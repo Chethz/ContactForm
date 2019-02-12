@@ -1,29 +1,40 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const Joi = require('joi');
 const routes = express.Router();
 
-const input = [
-    { id: 1, firstname: 'Jam', lastname: 'Brown', email: 'sam@gmail.com' },  
-    { id: 2, firstname: 'Joe', lastname: 'Rudex', email: 'joe@gmail.com' },  
-    { id: 3, firstname: 'Rex', lastname: 'Kodi', email: 'rex@gmail.com' },  
-  ];
+const Contact = mongoose.model('Contact', ({
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    }
+}));
 
-routes.get('/', (req, res) => {
-    res.send(input);
+routes.get('/', async (req, res) => {
+    const contact = await Contact.find().sort('firstName');
+    res.send(contact);
 });
 
-routes.post('/', (req, res) => {
-    const { error } = validateForm(req.body); 
+routes.post('/', async (req, res) => {
+    const {error} = validateForm(req.body);
     if (error) return res.status(400).send(error.details[0]);
 
-    const inputf = {
-        id: input.length + 1,
-        firstname: req.body.firstName,
-        lastname: req.body.lastName,
-        emai: req.body.email
+    let contact = new Contact({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+  });
 
-      };
-      input.push(inputf);
-      res.send(inputf);
+  contactus = await contact.save();
+  res.send(contactus);
 });
 
 function validateForm(input){
