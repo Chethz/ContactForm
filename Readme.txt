@@ -2,8 +2,9 @@
 
 Project
 =======
-A simple node.js porject with mongoDB databse. This simple application validate and store customer's 
-contact details in to the database. Joy is using to validate user input data. 
+A simple node.js porject with mongo databse. This simple application validate and store customer's 
+contact details in to the database. As a future development I will be implementing unit testing 
+for the project.
 
 Install
 =======
@@ -15,7 +16,8 @@ Validate user data using Joy and also validate data befor saving in to the datab
 
 Support
 =======
-Please do support and sugest improvements as purpose of this porject is to learn Node.js and MongoDB.
+Please do support and sugest improvements as purpose of this porject is to learn Node.js, Express 
+server and MongoDB.
 
 Tools and Frameworks
 ====================
