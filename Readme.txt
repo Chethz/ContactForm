@@ -1,4 +1,4 @@
-                    ----Contact Us---- 
+                                        ----Contact Us---- 
 
 Project
 =======
@@ -25,3 +25,8 @@ Tools and Frameworks
 Express : 4.16.4
 Joi : 14.3.1
 Mongoose : 5.4.11
+
+TODO
+====
+Move Database schema in to seperate file
+Write unit tests
